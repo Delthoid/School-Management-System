@@ -19,12 +19,12 @@
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/delthon%20pogi.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="82.0" layoutY="42.0" text="Delthon Villanueva" textFill="WHITE">
+                  <Label layoutX="65.0" layoutY="42.0" prefHeight="20.0" prefWidth="134.0" text="Delthon Villanueva" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

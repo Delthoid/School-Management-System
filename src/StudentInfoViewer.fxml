@@ -48,7 +48,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/businessman-character-avatar-isolated_24877-60111.jpg" />
+                  <Image url="@images/delthon%20pogi.jpg" />
                </image>
                <styleClass>
                   <String fx:value="pic" />

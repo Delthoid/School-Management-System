@@ -16,13 +16,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 
 public class StudentsController implements Initializable {
@@ -51,6 +56,8 @@ public class StudentsController implements Initializable {
     @FXML
     public TableColumn<StudentModel, String> lastNameCol;
     
+    @FXML private Slider viewSlider;
+    
     ObservableList<StudentModel> data = FXCollections.observableArrayList();
     StudentsList sList = new StudentsList();
     
@@ -64,7 +71,6 @@ public class StudentsController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         loadSection(); 
         resetTable();
         
@@ -159,11 +165,21 @@ public class StudentsController implements Initializable {
         resetTable();
         System.out.println(data);
         System.out.println(tableView);
+        sectBox.getSelectionModel().clearSelection();
     }
-    public void select(ActionEvent e)
+    @FXML
+    public void select(MouseEvent event)
     {
-        StudentModel s = tableView.getSelectionModel().getSelectedItem();
-        System.out.println(s);
+        if(event.getClickCount() == 2)
+        {
+            //System.out.println(tableView.getSelectionModel().getSelectedItem().getFirstName());
+            String i = tableView.getSelectionModel().getSelectedItem().getFirstName();
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText(i);
+
+            alert.showAndWait();
+        }
     }
     public void selectSection()
     {
@@ -178,6 +194,12 @@ public class StudentsController implements Initializable {
         connect.connect("SELECT * FROM tbl_students WHERE section = '" + sectBox.getValue().toString() + "'", "LOAD STUDENTS SECTION");
         studentsCountLabel.setText(c + " Student(s)");
         loadTable();
-        
+    }
+    public void adjustTableView()
+    {
+        Double v = viewSlider.getValue();
+        int sliderValue = (int) Math.round(v);
+        tableView.setFixedCellSize(v + 10);
+        System.out.println(sliderValue);
     }
 }
