@@ -1,0 +1,81 @@
+.card_background {
+    -fx-background-color: #00BBF9;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.button
+{
+	-fx-background-radius: 5px;
+	-fx-border-radius: 10px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+}
+
+.buttonInactive
+{
+	-fx-background-color: #00000000;
+	-fx-background-radius: 10px;
+	-fx-border-radius: 20px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+
+}
+.textBox {
+	-fx-background-radius: 10px;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('../fonts/Poppins-Medium.otf');
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat/Montserrat-Medium.ttf');
+}
+.popins {
+	-fx-font-family: 'Montserrat';
+}
+.mont {
+
+}
+.card
+{
+	
+	-fx-background-radius: 10px;
+	/*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);*/
+}
+.cardBlue
+{
+	-f-text-color: white;
+	-fx-background-color: #ADE8F4;
+	-fx-background-radius: 10px;
+	/*-fx-effect: dropshadow(three-pass-box, rgba(152, 226, 241, 1), 10, 0, 0, 5);*/
+}
+.id {
+	-fx-background-radius: 20px;
+	-fx-background-color: #9BF6FF;
+}
+
+.pic {
+	-fx-backgound-radius: 10px;
+}
+/*Buttons*/
+.buttonRed
+{
+	-fx-background-color: #FF8181;
+	-fx-background-radius: 5px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+}
+.buttonBlue
+{
+	-fx-background-color: #73A9FF;
+	-fx-border-radius: 5px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+}
