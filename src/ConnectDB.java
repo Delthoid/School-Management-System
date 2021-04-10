@@ -48,6 +48,8 @@ public class ConnectDB {
                     sList.studentsId.add(rs.getInt(1));
                     sList.firstNames.add(rs.getString(2));
                     sList.lastNames.add(rs.getString(4));
+                    sList.contacts.add(rs.getInt(7));
+                    sList.yearLevels.add(rs.getInt(13));
                 }
                 System.out.println("HEEEEHEHEHEHEHEHEHEHEH");
             }

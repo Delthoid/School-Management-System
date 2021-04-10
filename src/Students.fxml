@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="950.0" style="-fx-background-color: F8F9FA;" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentsController">
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="950.0" style="-fx-background-color: F8F9FA;" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentsController">
     <stylesheets>
         <URL value="@/css/style.css" />
     </stylesheets>
@@ -60,19 +60,19 @@
                   </Button>
                </children>
             </FlowPane>
-            <TableView fx:id="tableView" editable="true" layoutY="130.0" onMouseClicked="#select" prefHeight="416.0" prefWidth="902.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+            <TableView fx:id="tableView" editable="true" layoutY="130.0" onMouseClicked="#select" prefHeight="410.0" prefWidth="902.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
             <FlowPane alignment="BOTTOM_RIGHT" columnHalignment="CENTER" hgap="10.0" layoutX="538.0" layoutY="88.0" prefHeight="32.0" prefWidth="366.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="115.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="Edit selection">
+                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="View Selected Item">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="134.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Export as PDF">
+                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="134.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Export curent list">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

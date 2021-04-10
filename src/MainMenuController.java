@@ -35,6 +35,7 @@ public class MainMenuController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        dashboardBtn.getStyleClass().add("buttonSidebarActive");
         try
         {
             loadDashboard();
@@ -50,7 +51,10 @@ public class MainMenuController implements Initializable {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("DashboardPage.fxml"));
         mainPanel.getChildren().setAll(newLoadedPane);
         
-        //actLabel.setText("Dashboard");
+        dashboardBtn.getStyleClass().add("buttonSidebarActive");
+        
+        studentsBtn.getStyleClass().remove("buttonSidebarActive");
+        studentInfoBtn.getStyleClass().remove("buttonSidebarActive");
     }
     
     public void loadStudentInfoViwer()throws Exception
@@ -58,13 +62,21 @@ public class MainMenuController implements Initializable {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("StudentInfoViewer.fxml"));
         mainPanel.getChildren().setAll(newLoadedPane);
         
-        //actLabel.setText("Student Info");
+        studentInfoBtn.getStyleClass().add("buttonSidebarActive");
+        
+        studentsBtn.getStyleClass().remove("buttonSidebarActive");
+        dashboardBtn.getStyleClass().remove("buttonSidebarActive");
     }
     
     public void loadStudents()throws Exception
     {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("Students.fxml"));
         mainPanel.getChildren().setAll(newLoadedPane);
+        
+        studentsBtn.getStyleClass().add("buttonSidebarActive");
+        
+        studentInfoBtn.getStyleClass().remove("buttonSidebarActive");
+        dashboardBtn.getStyleClass().remove("buttonSidebarActive");
     }
     
     public void loadAdminSettings()

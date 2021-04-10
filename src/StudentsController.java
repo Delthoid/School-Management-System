@@ -83,12 +83,13 @@ public class StudentsController implements Initializable {
         connect.connect("SELECT * FROM tbl_students", "LOAD STUDENTS");
         for(int i = 0; i < sList.studentsId.size(); i++)
         {
-            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.studentsId.get(i)));
+            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.studentsId.get(i), sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i)));
         }
 
         //Create columns
         TableColumn studentIdCol = new TableColumn("Student ID");
         studentIdCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("StudentId"));
+        studentIdCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
         
         TableColumn firstNameCol = new TableColumn("First Name");
         firstNameCol.setCellValueFactory(new PropertyValueFactory<StudentModel, String>("FirstName"));
@@ -96,12 +97,21 @@ public class StudentsController implements Initializable {
         TableColumn lastNameCol = new TableColumn("Last Name");
         lastNameCol.setCellValueFactory(new PropertyValueFactory<StudentModel, String>("LastName"));
         
+        TableColumn contactCol = new TableColumn("Contact Number");
+        contactCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("Contact"));
+        
+        TableColumn sectionCol = new TableColumn("Section");
+        sectionCol.setCellValueFactory(new PropertyValueFactory<StudentModel, String>("Section"));
+        
+        TableColumn yearLevelCol = new TableColumn("Year Level");
+        yearLevelCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("YearLevel"));
+        
         //Adding data to the table
         tableView.getItems().clear();
         tableView.getItems().addAll(data);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tableView.getColumns().removeAll();
-        tableView.getColumns().addAll(studentIdCol, firstNameCol, lastNameCol);
+        tableView.getColumns().addAll(studentIdCol, firstNameCol, lastNameCol, contactCol, sectionCol, yearLevelCol);
         
         System.out.println(data);
     }

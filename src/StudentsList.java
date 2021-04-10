@@ -7,4 +7,6 @@ public class StudentsList {
     public static ArrayList<Integer> studentsId = new ArrayList<Integer>();
     public static ArrayList<String> firstNames = new ArrayList<String>();
     public static ArrayList<String> lastNames = new ArrayList<String>();
+    public static ArrayList<Integer> contacts = new ArrayList<Integer>();
+    public static ArrayList<Integer> yearLevels = new ArrayList<Integer>();
 }

@@ -15,7 +15,7 @@
         <URL value="@/css/style.css" />
     </stylesheets>
    <children>
-      <VBox prefHeight="720.0" prefWidth="230.0" spacing="5.0" style="-fx-background-color: #27AE60;" AnchorPane.leftAnchor="0.0">
+      <VBox prefHeight="720.0" prefWidth="230.0" spacing="5.0" style="-fx-background-color: #073B4C;" AnchorPane.leftAnchor="0.0">
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -34,7 +34,7 @@
                   <Insets right="5.0" />
                </VBox.margin>
             </AnchorPane>
-            <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadDashboard" prefHeight="40.0" style="-fx-background-color: #219653;" stylesheets="@css/style.css" text="Dashboard">
+            <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadDashboard" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Dashboard">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>

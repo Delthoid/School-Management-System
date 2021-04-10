@@ -79,3 +79,12 @@
 	-fx-max-height: 50px;
 	-fx-text-fill: white;
 }
+.buttonSidebarActive
+{
+	-fx-background-color: #118AB2;
+	-fx-background-radius: 5px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+
+}
