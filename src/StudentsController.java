@@ -35,6 +35,9 @@ public class StudentsController implements Initializable {
     
     @FXML
     private Label studentsLabel;
+    
+    @FXML
+    private Label studentsCountLabel;
    
     @FXML
     public TableView<StudentModel> tableView;
@@ -82,13 +85,13 @@ public class StudentsController implements Initializable {
     }
     public void loadTable()
     {
+        EntriesCount eCount = new EntriesCount();
+        int c = eCount.totalSelectedStudents;
         //Call connect to db class
-        
         for(int i = 0; i < sList.studentsId.size(); i++)
         {
             data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.studentsId.get(i), sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i)));
         }
-
         //Create columns
         TableColumn studentIdCol = new TableColumn("Student ID");
         studentIdCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("StudentId"));
@@ -108,6 +111,8 @@ public class StudentsController implements Initializable {
         
         TableColumn yearLevelCol = new TableColumn("Year Level");
         yearLevelCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("YearLevel"));
+        
+        studentsCountLabel.setText(c + " Students");
         
         //Adding data to the table
         tableView.getItems().clear();
@@ -162,6 +167,8 @@ public class StudentsController implements Initializable {
     }
     public void selectSection()
     {
+        EntriesCount eCount = new EntriesCount();
+        int c = eCount.totalSelectedStudents;
         studentsLabel.setText(sectBox.getValue().toString());
         System.out.println(sectBox.getValue());
         
@@ -169,7 +176,8 @@ public class StudentsController implements Initializable {
         //Call connect to db class
         ConnectDB connect = new ConnectDB();
         connect.connect("SELECT * FROM tbl_students WHERE section = '" + sectBox.getValue().toString() + "'", "LOAD STUDENTS SECTION");
-        
+        studentsCountLabel.setText(c + " Students");
         loadTable();
+        
     }
 }

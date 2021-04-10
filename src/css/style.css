@@ -50,7 +50,7 @@
 .cardBlue
 {
 	-f-text-color: white;
-	-fx-background-color: #ADE8F4;
+	-fx-background-color: #CAF0F8;
 	-fx-background-radius: 10px;
 	/*-fx-effect: dropshadow(three-pass-box, rgba(152, 226, 241, 1), 10, 0, 0, 5);*/
 }
@@ -74,6 +74,14 @@
 .buttonBlue
 {
 	-fx-background-color: #73A9FF;
+	-fx-border-radius: 5px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+}
+.buttonOrange
+{
+	-fx-background-color: #FFC278;
 	-fx-border-radius: 5px;
 	-fx-max-width: 300px;
 	-fx-max-height: 50px;

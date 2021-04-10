@@ -42,6 +42,7 @@ public class ConnectDB {
             else if(y == "LOAD STUDENTS")
             {
                 StudentsList sList = new StudentsList();
+                EntriesCount eCount = new EntriesCount();
                 while(rs.next())
                 {
                     sList.sections.add(rs.getString(14));
@@ -51,11 +52,12 @@ public class ConnectDB {
                     sList.contacts.add(rs.getInt(7));
                     sList.yearLevels.add(rs.getInt(13));
                 }
-                System.out.println("HEEEEHEHEHEHEHEHEHEHEH");
+                eCount.totalSelectedStudents = sList.studentsId.size();
             }
             else if(y == "LOAD STUDENTS SECTION")
             {
                 StudentsList sList = new StudentsList();
+                EntriesCount eCount = new EntriesCount();
                 while(rs.next())
                 {
                     sList.sections.add(rs.getString(14));
@@ -65,6 +67,7 @@ public class ConnectDB {
                     sList.contacts.add(rs.getInt(7));
                     sList.yearLevels.add(rs.getInt(13));
                 }
+                eCount.totalSelectedStudents = sList.studentsId.size();
             }
             else if(y == "STUDENT INFO")
             {

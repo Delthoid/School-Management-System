@@ -90,7 +90,7 @@
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="studentsLabel11" prefHeight="43.0" prefWidth="201.0" text="11992 Students">
+                  <Label fx:id="studentsCountLabel" prefHeight="43.0" prefWidth="201.0" text="119 Students">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
