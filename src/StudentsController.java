@@ -32,31 +32,19 @@ import javafx.scene.input.MouseEvent;
 
 public class StudentsController implements Initializable {
 
-    @FXML
-    private ComboBox sectBox;
-    
-    @FXML
-    private Button b;
-    
-    @FXML
-    private Label studentsLabel;
-    
-    @FXML
-    private Label studentsCountLabel;
-   
-    @FXML
-    public TableView<StudentModel> tableView;
-    
-    @FXML
-    public TableColumn<StudentModel, Integer> studentIdCol;
-    
-    @FXML
-    public TableColumn<StudentModel, String> firstNameCol;
-    
-    @FXML
-    public TableColumn<StudentModel, String> lastNameCol;
-    
+    @FXML private ComboBox sectBox;    
+    @FXML private Button b;    
+    @FXML private Label studentsLabel;    
+    @FXML private Label studentsCountLabel;   
+    @FXML public TableView<StudentModel> tableView;    
+    @FXML public TableColumn<StudentModel, Integer> studentIdCol; 
+    @FXML public TableColumn<StudentModel, String> firstNameCol;
+    @FXML public TableColumn<StudentModel, String> lastNameCol;
+    @FXML private Button viewSelectedStudentBtn;
     @FXML private Slider viewSlider;
+    
+    //Public datatypes
+    public int selectedStudentId = 0;
     
     ObservableList<StudentModel> data = FXCollections.observableArrayList();
     StudentsList sList = new StudentsList();
@@ -179,6 +167,26 @@ public class StudentsController implements Initializable {
             alert.setHeaderText(i);
 
             alert.showAndWait();
+            
+            selectedStudentId = tableView.getSelectionModel().getSelectedItem().getStudentId();
+        }
+    }
+    @FXML
+    public void getSelectedStudent() throws Exception
+    {
+        if(selectedStudentId == 0)
+        {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("No selection");
+            alert.showAndWait();
+        }
+        else
+        {
+            MainMenuController mc = new MainMenuController();
+            mc.loadStudentInfoViwer(); 
+            
+            
         }
     }
     public void selectSection()
