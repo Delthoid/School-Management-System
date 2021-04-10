@@ -112,7 +112,7 @@ public class StudentsController implements Initializable {
         TableColumn yearLevelCol = new TableColumn("Year Level");
         yearLevelCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("YearLevel"));
         
-        studentsCountLabel.setText(c + " Students");
+        studentsCountLabel.setText(c + " Student(s)");
         
         //Adding data to the table
         tableView.getItems().clear();
@@ -176,7 +176,7 @@ public class StudentsController implements Initializable {
         //Call connect to db class
         ConnectDB connect = new ConnectDB();
         connect.connect("SELECT * FROM tbl_students WHERE section = '" + sectBox.getValue().toString() + "'", "LOAD STUDENTS SECTION");
-        studentsCountLabel.setText(c + " Students");
+        studentsCountLabel.setText(c + " Student(s)");
         loadTable();
         
     }
