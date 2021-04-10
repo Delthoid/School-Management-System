@@ -37,7 +37,7 @@ public class StudentsController implements Initializable {
     private Label studentsLabel;
    
     @FXML
-    private TableView<StudentModel> tableView;
+    public TableView<StudentModel> tableView;
     
     @FXML
     public TableColumn<StudentModel, Integer> studentIdCol;
@@ -48,6 +48,8 @@ public class StudentsController implements Initializable {
     @FXML
     public TableColumn<StudentModel, String> lastNameCol;
     
+    ObservableList<StudentModel> data = FXCollections.observableArrayList();
+    StudentsList sList = new StudentsList();
     
     private static final String connection = "jdbc:mysql://127.0.0.1:3306/student_management";
     
@@ -59,20 +61,26 @@ public class StudentsController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadSection();
+        
+        loadSection(); 
+        resetTable();
         loadTable();
-    }   
+    }
+    public void resetTable()
+    {
+        sList.sections.removeAll(sList.sections);
+        sList.studentsId.removeAll(sList.studentsId);
+        sList.firstNames.removeAll(sList.firstNames);
+        sList.lastNames.removeAll(sList.lastNames);
+        
+        data.clear();
+        tableView.getItems().clear();
+    }
     public void loadTable()
     {
         //Call connect to db class
         ConnectDB connect = new ConnectDB();
         connect.connect("SELECT * FROM tbl_students", "LOAD STUDENTS");
-        StudentsList sList = new StudentsList();
-        
-        //DAta
-        
-        ObservableList<StudentModel> data = FXCollections.observableArrayList();
-        data.clear();
         for(int i = 0; i < sList.studentsId.size(); i++)
         {
             data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.studentsId.get(i)));
@@ -89,8 +97,8 @@ public class StudentsController implements Initializable {
         lastNameCol.setCellValueFactory(new PropertyValueFactory<StudentModel, String>("LastName"));
         
         //Adding data to the table
-        //tableView.getItems().add(new StudentModel("Del", "Thon", 12333));
-        tableView.getItems().removeAll();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(data);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tableView.getColumns().removeAll();
         tableView.getColumns().addAll(studentIdCol, firstNameCol, lastNameCol);
@@ -111,14 +119,10 @@ public class StudentsController implements Initializable {
             
             while(rs.next())
             {
-                if(sections.contains(rs.getString(1)))
-                {
-                    
+                if(sections.contains(rs.getString(1))){  
                 }
                 else
-                {
                     sections.add(rs.getString(1));
-                }
             }
             conn.close();
         }
@@ -134,9 +138,9 @@ public class StudentsController implements Initializable {
     }
     public void test()
     {
-        //tableView.getColumns().removeAll(); 
-        System.out.println("test " + sections);
-        //loadTable();
+        resetTable();
+        System.out.println(data);
+        System.out.println(tableView);
     }
     public void select(ActionEvent e)
     {
