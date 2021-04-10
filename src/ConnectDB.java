@@ -53,6 +53,19 @@ public class ConnectDB {
                 }
                 System.out.println("HEEEEHEHEHEHEHEHEHEHEH");
             }
+            else if(y == "LOAD STUDENTS SECTION")
+            {
+                StudentsList sList = new StudentsList();
+                while(rs.next())
+                {
+                    sList.sections.add(rs.getString(14));
+                    sList.studentsId.add(rs.getInt(1));
+                    sList.firstNames.add(rs.getString(2));
+                    sList.lastNames.add(rs.getString(4));
+                    sList.contacts.add(rs.getInt(7));
+                    sList.yearLevels.add(rs.getInt(13));
+                }
+            }
             else if(y == "STUDENT INFO")
             {
                 StudentInfoViewerController studnt = new StudentInfoViewerController();

@@ -64,6 +64,10 @@ public class StudentsController implements Initializable {
         
         loadSection(); 
         resetTable();
+        
+        ConnectDB connect = new ConnectDB();
+        connect.connect("SELECT * FROM tbl_students", "LOAD STUDENTS");
+        
         loadTable();
     }
     public void resetTable()
@@ -79,8 +83,7 @@ public class StudentsController implements Initializable {
     public void loadTable()
     {
         //Call connect to db class
-        ConnectDB connect = new ConnectDB();
-        connect.connect("SELECT * FROM tbl_students", "LOAD STUDENTS");
+        
         for(int i = 0; i < sList.studentsId.size(); i++)
         {
             data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.studentsId.get(i), sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i)));
@@ -110,7 +113,7 @@ public class StudentsController implements Initializable {
         tableView.getItems().clear();
         tableView.getItems().addAll(data);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        tableView.getColumns().removeAll();
+        tableView.getColumns().clear();
         tableView.getColumns().addAll(studentIdCol, firstNameCol, lastNameCol, contactCol, sectionCol, yearLevelCol);
         
         System.out.println(data);
@@ -146,7 +149,7 @@ public class StudentsController implements Initializable {
         }
         System.out.println(sections);
     }
-    public void test()
+    public void clearFilter()
     {
         resetTable();
         System.out.println(data);
@@ -161,5 +164,12 @@ public class StudentsController implements Initializable {
     {
         studentsLabel.setText(sectBox.getValue().toString());
         System.out.println(sectBox.getValue());
+        
+        resetTable();
+        //Call connect to db class
+        ConnectDB connect = new ConnectDB();
+        connect.connect("SELECT * FROM tbl_students WHERE section = '" + sectBox.getValue().toString() + "'", "LOAD STUDENTS SECTION");
+        
+        loadTable();
     }
 }

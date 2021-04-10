@@ -53,7 +53,7 @@
                   <Label text="Filter" />
                   <ComboBox fx:id="sectBox" onAction="#selectSection" prefHeight="32.0" prefWidth="116.0" promptText="Section" />
                   <ComboBox prefHeight="32.0" prefWidth="116.0" promptText="Year level" />
-                  <Button fx:id="b" mnemonicParsing="false" onAction="#test" prefHeight="32.0" prefWidth="108.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Clear filter">
+                  <Button fx:id="b" mnemonicParsing="false" onAction="#clearFilter" prefHeight="32.0" prefWidth="108.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Clear filter">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
