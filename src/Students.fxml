@@ -42,10 +42,6 @@
          <children>
             <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" layoutY="88.0" prefHeight="32.0" prefWidth="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="495.0">
                <children>
-                  <Label text="Filter">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
                   <ComboBox fx:id="sectBox" onAction="#selectSection" promptText="Section" styleClass="comboBox" stylesheets="@css/style.css" />
                   <AnchorPane>
                      <children>
