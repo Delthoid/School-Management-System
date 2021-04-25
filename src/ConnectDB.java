@@ -49,6 +49,7 @@ public class ConnectDB {
                     sList.studentsId.add(rs.getInt(1));
                     sList.firstNames.add(rs.getString(2));
                     sList.lastNames.add(rs.getString(4));
+                    sList.mNames.add(rs.getString(3));
                     sList.contacts.add(rs.getInt(7));
                     sList.yearLevels.add(rs.getInt(13));
                 }
@@ -64,8 +65,11 @@ public class ConnectDB {
                     sList.studentsId.add(rs.getInt(1));
                     sList.firstNames.add(rs.getString(2));
                     sList.lastNames.add(rs.getString(4));
+                    sList.mNames.add(rs.getString(3));
                     sList.contacts.add(rs.getInt(7));
                     sList.yearLevels.add(rs.getInt(13));
+                    
+                    
                 }
                 eCount.totalSelectedStudents = sList.studentsId.size();
             }

@@ -18,26 +18,24 @@ import javafx.scene.layout.Pane;
 public class MainMenuController implements Initializable {
 
     @FXML
-    private Pane mainPanel;
+    public Pane mainPanel;
     
-    @FXML
-    private Label actLabel;
-    @FXML
-    private Button dashboardBtn;
-    @FXML
-    private Button studentInfoBtn;
-    @FXML
-    private Button studentsBtn;
-    @FXML
-    private Button enrollmentBtn;
-    @FXML
-    private Button adminSettingsBtn;
+    @FXML public Label actLabel;
+    @FXML public Button dashboardBtn;
+    @FXML public Button studentInfoBtn;
+    @FXML public Button studentsBtn;
+    @FXML public Button enrollmentBtn;
+    @FXML public Button adminSettingsBtn;
+    
+    Pane studentsPane;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dashboardBtn.getStyleClass().add("buttonSidebarActive");
         try
         {
+            studentsPane =  FXMLLoader.load(getClass().getResource("Students.fxml"));
+            
             loadDashboard();
         }
         catch(Exception e)
@@ -57,21 +55,27 @@ public class MainMenuController implements Initializable {
         studentInfoBtn.getStyleClass().remove("buttonSidebarActive");
     }
     
-    public void loadStudentInfoViwer()throws Exception
+    public void loadStudentInfoViwer()
     {
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("StudentInfoViewer.fxml"));
-        mainPanel.getChildren().setAll(newLoadedPane);
-        
-        studentInfoBtn.getStyleClass().add("buttonSidebarActive");
-        
-        studentsBtn.getStyleClass().remove("buttonSidebarActive");
-        dashboardBtn.getStyleClass().remove("buttonSidebarActive");
+        try
+        {
+            Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("StudentInfoViewer.fxml"));
+            mainPanel.getChildren().setAll(newLoadedPane);
+
+            studentInfoBtn.getStyleClass().add("buttonSidebarActive");
+
+            studentsBtn.getStyleClass().remove("buttonSidebarActive");
+            dashboardBtn.getStyleClass().remove("buttonSidebarActive");
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
     }
     
     public void loadStudents()throws Exception
     {
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("Students.fxml"));
-        mainPanel.getChildren().setAll(newLoadedPane);
+        mainPanel.getChildren().setAll(studentsPane);
         
         studentsBtn.getStyleClass().add("buttonSidebarActive");
         

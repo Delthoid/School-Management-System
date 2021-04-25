@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.*;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
@@ -67,7 +69,19 @@ public class StudentManagementFxmlController implements Initializable {
                             Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);
+                            
+                            /*
+                            Screen screen = Screen.getPrimary();
+                            Rectangle2D bounds = screen.getVisualBounds();
+                            
+                            stage.setX(bounds.getMinX());
+                            stage.setY(bounds.getMinY());
+                            stage.setWidth(bounds.getWidth());
+                            stage.setHeight(bounds.getHeight());
+                            */
+                            
                             stage.setScene(scene);
+                            stage.setMaximized(true);
                             stage.show();
                             
                             Stage curr_stage = (Stage) loginButton.getScene().getWindow();

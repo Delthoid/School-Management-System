@@ -34,21 +34,17 @@ public class StudentInfoViewerController implements Initializable {
     private TextField searchBox;
     
     //Labels
-    @FXML
-    private Label fullnameLabel;
-    @FXML
-    private Label idLabel;
-    @FXML
-    private Label ageLabel;
-    @FXML
-    private Label emailLabel;
-    @FXML
-    private Label addressLabel;
+    @FXML public static Label fullnameLabel;
+    @FXML public static Label idLabel;
+    @FXML public static Label ageLabel;
+    @FXML public static Label emailLabel;
+    @FXML public static Label addressLabel;
     
-    //TextFields
-    @FXML
+    //Student Data
+    public String fullName = "";
     
     public static boolean exist = false;
+    public static int currentStudentId = 0;
     
     public static ArrayList<String> studentInfo = new ArrayList<String>();
     
@@ -101,7 +97,7 @@ public class StudentInfoViewerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        idLabel.setText(currentStudentId + "");
     }    
     
 }

@@ -9,6 +9,7 @@ public class StudentModel
 {
     private String firstName;
     private String lastName;
+    private String middleName;
     private int studentId;
     private String section;
     private int yearLevel;
@@ -19,7 +20,7 @@ public class StudentModel
         
     }
     
-    public StudentModel(String firstName, String lastName, int studentId, String section, int yearLevel, int contact)
+    public StudentModel(String firstName, String lastName, String middleName, int studentId, String section, int yearLevel, int contact)
     {
         /*this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
@@ -31,6 +32,7 @@ public class StudentModel
         this.section = section;
         this.yearLevel = yearLevel;
         this.contact = contact;
+        this.middleName = middleName;
     }
     
     public String getFirstName()
@@ -57,6 +59,10 @@ public class StudentModel
     {
         return contact;
     }
+    public String getMiddleName()
+    {
+        return middleName;
+    }
     
     public void setFirstName(String firstName)
     {
@@ -81,5 +87,9 @@ public class StudentModel
     public void setContact(int contact)
     {
         this.contact = contact;
+    }
+    public void setMiddleName(String middleName)
+    {
+        this.middleName = middleName;
     }
 }

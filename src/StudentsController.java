@@ -15,7 +15,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -28,13 +30,15 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 
 public class StudentsController implements Initializable {
 
     @FXML private ComboBox sectBox;    
     @FXML private Button b;    
-    @FXML private Label studentsLabel;    
+    @FXML private Label studentsLabel;     
     @FXML private Label studentsCountLabel;   
     @FXML public TableView<StudentModel> tableView;    
     @FXML public TableColumn<StudentModel, Integer> studentIdCol; 
@@ -42,6 +46,8 @@ public class StudentsController implements Initializable {
     @FXML public TableColumn<StudentModel, String> lastNameCol;
     @FXML private Button viewSelectedStudentBtn;
     @FXML private Slider viewSlider;
+    @FXML private AnchorPane thisPane;
+    @FXML private Button studentInfoButton;
     
     //Public datatypes
     public int selectedStudentId = 0;
@@ -67,12 +73,21 @@ public class StudentsController implements Initializable {
         
         loadTable();
     }
+    public void reloadTable()
+    {
+        resetTable();
+        ConnectDB connect = new ConnectDB();
+        connect.connect("SELECT * FROM tbl_students", "LOAD STUDENTS");
+        loadTable();
+        sectBox.getSelectionModel().clearSelection();
+    }
     public void resetTable()
     {
         sList.sections.removeAll(sList.sections);
         sList.studentsId.removeAll(sList.studentsId);
         sList.firstNames.removeAll(sList.firstNames);
         sList.lastNames.removeAll(sList.lastNames);
+        sList.contacts.removeAll(sList.contacts);
         
         data.clear();
         tableView.getItems().clear();
@@ -84,7 +99,7 @@ public class StudentsController implements Initializable {
         //Call connect to db class
         for(int i = 0; i < sList.studentsId.size(); i++)
         {
-            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.studentsId.get(i), sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i)));
+            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.mNames.get(i),sList.studentsId.get(i), sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i)));
         }
         //Create columns
         TableColumn studentIdCol = new TableColumn("Student ID");
@@ -96,6 +111,9 @@ public class StudentsController implements Initializable {
         
         TableColumn lastNameCol = new TableColumn("Last Name");
         lastNameCol.setCellValueFactory(new PropertyValueFactory<StudentModel, String>("LastName"));
+        
+        TableColumn mNameCol = new TableColumn("Middle Name");
+        mNameCol.setCellValueFactory(new PropertyValueFactory<StudentModel, String>("MiddleName"));
         
         TableColumn contactCol = new TableColumn("Contact Number");
         contactCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("Contact"));
@@ -113,7 +131,7 @@ public class StudentsController implements Initializable {
         tableView.getItems().addAll(data);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tableView.getColumns().clear();
-        tableView.getColumns().addAll(studentIdCol, firstNameCol, lastNameCol, contactCol, sectionCol, yearLevelCol);
+        tableView.getColumns().addAll(studentIdCol, firstNameCol, mNameCol, lastNameCol, contactCol, sectionCol, yearLevelCol);
         
         System.out.println(data);
     }
@@ -158,18 +176,24 @@ public class StudentsController implements Initializable {
     @FXML
     public void select(MouseEvent event)
     {
-        if(event.getClickCount() == 2)
-        {
-            //System.out.println(tableView.getSelectionModel().getSelectedItem().getFirstName());
-            String i = tableView.getSelectionModel().getSelectedItem().getFirstName();
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("Warning Dialog");
-            alert.setHeaderText(i);
-
-            alert.showAndWait();
-            
-            selectedStudentId = tableView.getSelectionModel().getSelectedItem().getStudentId();
-        }
+        //This part will set the value of labels on StudentInfoViewer page
+        String fname, lastname, mname, email, contaact, address;
+        StudentInfoViewerController infoViewer = new StudentInfoViewerController();
+        //Temporary assigning values to variables
+        selectedStudentId = tableView.getSelectionModel().getSelectedItem().getStudentId();
+        fname = tableView.getSelectionModel().getSelectedItem().getFirstName();
+        lastname = tableView.getSelectionModel().getSelectedItem().getLastName();
+        mname = tableView.getSelectionModel().getSelectedItem().getMiddleName();
+        
+        infoViewer.currentStudentId = selectedStudentId;
+        //infoViewer.fullName = fname + ", " + lastname + " " + mname;
+        
+        /*
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("WEee");
+        alert.setHeaderText(selectedStudentId + "\n" + infoViewer.currentStudentId);
+        alert.showAndWait();
+        */
     }
     @FXML
     public void getSelectedStudent() throws Exception
@@ -183,10 +207,19 @@ public class StudentsController implements Initializable {
         }
         else
         {
-            MainMenuController mc = new MainMenuController();
-            mc.loadStudentInfoViwer(); 
-            
-            
+            try
+            {
+                Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("StudentInfoViewer.fxml"));
+                AnchorPane node = (AnchorPane) thisPane.getParent();
+                node.getChildren().setAll(newLoadedPane);
+            }
+            catch(Exception ex)
+            {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("There was an error");
+                alert.setHeaderText(ex.toString());
+                alert.showAndWait();
+            }
         }
     }
     public void selectSection()
@@ -203,6 +236,7 @@ public class StudentsController implements Initializable {
         studentsCountLabel.setText(c + " Student(s)");
         loadTable();
     }
+    /*
     public void adjustTableView()
     {
         Double v = viewSlider.getValue();
@@ -210,4 +244,5 @@ public class StudentsController implements Initializable {
         tableView.setFixedCellSize(v + 10);
         System.out.println(sliderValue);
     }
+    */
 }

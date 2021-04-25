@@ -1,9 +1,26 @@
+.appbar {
+	-fx-background-color: #74b9ff;
+}
+.searchbox {
+	-fx-background-radius: 10px;
+	-fx-background-color: #0984e3;
+}
+.comboBox {
+    -fx-background-color: #dfe6e9;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+.comboBoxBold {
+    -fx-background-color: #dfe6e9;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
 .card_background {
     -fx-background-color: #00BBF9;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
-
 .button
 {
 	-fx-background-radius: 5px;
@@ -24,7 +41,7 @@
 
 }
 .textBox {
-	-fx-background-radius: 5px;
+	-fx-background-radius: 10px;
 }
 
 @font-face {
@@ -45,14 +62,14 @@
 {
 	
 	-fx-background-radius: 10px;
-	/*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);*/
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
 }
 .cardBlue
 {
 	-f-text-color: white;
 	-fx-background-color: #CAF0F8;
 	-fx-background-radius: 10px;
-	/*-fx-effect: dropshadow(three-pass-box, rgba(152, 226, 241, 1), 10, 0, 0, 5);*/
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
 }
 .id {
 	-fx-background-radius: 20px;
