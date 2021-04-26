@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
     <stylesheets>
         <URL value="@/css/style.css" />
     </stylesheets>
    <children>
-      <VBox prefHeight="720.0" prefWidth="230.0" spacing="5.0" style="-fx-background-color: #073B4C;" AnchorPane.leftAnchor="0.0">
+      <VBox prefHeight="725.0" prefWidth="230.0" spacing="5.0" style="-fx-background-color: #073B4C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -34,17 +31,12 @@
                   <Insets right="5.0" />
                </VBox.margin>
             </AnchorPane>
-            <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadDashboard" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Dashboard">
+            <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#loadDashboard" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Dashboard">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="studentInfoBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadStudentInfoViwer" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Student Info">
-               <font>
-                  <Font name="Segoe UI" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="studentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadStudents" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Students">
+            <Button fx:id="studentsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#loadStudents" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Students">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>
@@ -69,5 +61,10 @@
             <AnchorPane fx:id="mainPanel" prefHeight="738.0" prefWidth="1050.0" style="-fx-background-color: F8F9FA;" />
          </children>
       </VBox>
+      <Button fx:id="logoutBtn" alignment="BASELINE_LEFT" layoutY="685.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="230.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Logout" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -18,20 +18,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SelectionModel;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
 public class StudentsController implements Initializable {
@@ -49,14 +54,17 @@ public class StudentsController implements Initializable {
     @FXML private AnchorPane thisPane;
     @FXML private Button studentInfoButton;
     
+    @FXML private Button resetButton;
+    @FXML private Button exportBtn;
+    
     //Public datatypes
     public int selectedStudentId = 0;
     
     ObservableList<StudentModel> data = FXCollections.observableArrayList();
     StudentsList sList = new StudentsList();
+    static String fname, lname, mname, email, contact, address;
     
     private static final String connection = "jdbc:mysql://127.0.0.1:3306/student_management";
-    
     public ArrayList<String> sections = new ArrayList<String>();
 
     public StudentsController() {
@@ -65,6 +73,21 @@ public class StudentsController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Add icons to buttpns
+        b.setGraphic(new ImageView("icons/clear.png"));
+        resetButton.setGraphic(new ImageView("icons/reset.png"));
+        viewSelectedStudentBtn.setGraphic(new ImageView("icons/view.png"));
+        exportBtn.setGraphic(new ImageView("icons/export.png"));
+        
+        //Set the preferred height of buttons to 32 to fix the height and expandinf issue
+        resetButton.setPrefSize(resetButton.getPrefWidth(), 32);
+        viewSelectedStudentBtn.setPrefSize(viewSelectedStudentBtn.getPrefWidth(), 32);
+        exportBtn.setPrefSize(exportBtn.getPrefWidth(), 32);
+        b.setPrefSize(b.getPrefWidth(), 32);
+        
+        //Change the table cell height
+        tableView.setFixedCellSize(30);
+        
         loadSection(); 
         resetTable();
         
@@ -99,7 +122,7 @@ public class StudentsController implements Initializable {
         //Call connect to db class
         for(int i = 0; i < sList.studentsId.size(); i++)
         {
-            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.mNames.get(i),sList.studentsId.get(i), sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i)));
+            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.mNames.get(i),sList.studentsId.get(i), sList.ages.get(i),sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i), sList.emails.get(i), sList.addresses.get(i)));
         }
         //Create columns
         TableColumn studentIdCol = new TableColumn("Student ID");
@@ -168,32 +191,17 @@ public class StudentsController implements Initializable {
     }
     public void clearFilter()
     {
-        resetTable();
-        System.out.println(data);
-        System.out.println(tableView);
         sectBox.getSelectionModel().clearSelection();
     }
     @FXML
     public void select(MouseEvent event)
     {
-        //This part will set the value of labels on StudentInfoViewer page
-        String fname, lastname, mname, email, contaact, address;
-        StudentInfoViewerController infoViewer = new StudentInfoViewerController();
-        //Temporary assigning values to variables
         selectedStudentId = tableView.getSelectionModel().getSelectedItem().getStudentId();
         fname = tableView.getSelectionModel().getSelectedItem().getFirstName();
-        lastname = tableView.getSelectionModel().getSelectedItem().getLastName();
+        lname = tableView.getSelectionModel().getSelectedItem().getLastName();
         mname = tableView.getSelectionModel().getSelectedItem().getMiddleName();
         
-        infoViewer.currentStudentId = selectedStudentId;
-        //infoViewer.fullName = fname + ", " + lastname + " " + mname;
-        
-        /*
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("WEee");
-        alert.setHeaderText(selectedStudentId + "\n" + infoViewer.currentStudentId);
-        alert.showAndWait();
-        */
+        System.out.println(fname + lname + mname);
     }
     @FXML
     public void getSelectedStudent() throws Exception
@@ -207,33 +215,37 @@ public class StudentsController implements Initializable {
         }
         else
         {
-            try
-            {
-                Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("StudentInfoViewer.fxml"));
-                AnchorPane node = (AnchorPane) thisPane.getParent();
-                node.getChildren().setAll(newLoadedPane);
-            }
-            catch(Exception ex)
-            {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("There was an error");
-                alert.setHeaderText(ex.toString());
-                alert.showAndWait();
-            }
+           //Assinging the values to selected profile class base on the selected item on table
+           SelectedProfile profile = new SelectedProfile();
+           profile.setLastName(tableView.getSelectionModel().getSelectedItem().getLastName());
+           profile.setFirstName(tableView.getSelectionModel().getSelectedItem().getFirstName());
+           profile.setMInitial(tableView.getSelectionModel().getSelectedItem().getMiddleName().charAt(0) + ".");
+           profile.setStudentId(tableView.getSelectionModel().getSelectedItem().getStudentId());
+           profile.setAge(tableView.getSelectionModel().getSelectedItem().getAge());
+           profile.setEmail(tableView.getSelectionModel().getSelectedItem().getEmail());
+           profile.setAddress(tableView.getSelectionModel().getSelectedItem().getAddress());
+            
+           Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("StudentInfoViewer.fxml"));
+           Scene scene = new Scene(root);
+           Stage stage = new Stage();
+           stage.setTitle(profile.getLastName());
+           stage.setScene(scene);
+           
+           stage.show();
         }
     }
     public void selectSection()
     {
         EntriesCount eCount = new EntriesCount();
         int c = eCount.totalSelectedStudents;
-        studentsLabel.setText(sectBox.getValue().toString());
+        //studentsLabel.setText(sectBox.getValue().toString());
         System.out.println(sectBox.getValue());
         
         resetTable();
         //Call connect to db class
         ConnectDB connect = new ConnectDB();
         connect.connect("SELECT * FROM tbl_students WHERE section = '" + sectBox.getValue().toString() + "'", "LOAD STUDENTS SECTION");
-        studentsCountLabel.setText(c + " Student(s)");
+        //studentsCountLabel.setText(c + " Student(s)");
         loadTable();
     }
     /*

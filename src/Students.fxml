@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="thisPane" prefHeight="659.0" prefWidth="950.0" style="-fx-background-color: F8F9FA;" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentsController">
+<AnchorPane id="AnchorPane" fx:id="thisPane" prefHeight="659.0" prefWidth="950.0" style="-fx-background-color: F8F9FA;" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentsController">
     <stylesheets>
         <URL value="@/css/style.css" />
     </stylesheets>
@@ -40,61 +40,19 @@
       </AnchorPane>
       <AnchorPane layoutX="24.0" layoutY="138.0" prefHeight="574.0" prefWidth="902.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="70.0">
          <children>
-            <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" layoutY="88.0" prefHeight="32.0" prefWidth="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="495.0">
+            <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" layoutY="39.0" prefHeight="32.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="495.0">
                <children>
-                  <ComboBox fx:id="sectBox" onAction="#selectSection" promptText="Section" styleClass="comboBox" stylesheets="@css/style.css" />
+                  <ComboBox fx:id="sectBox" onAction="#selectSection" prefHeight="32.0" promptText="Section" styleClass="comboBox" stylesheets="@css/style.css" />
                   <AnchorPane>
                      <children>
-                        <ComboBox promptText="Year Level" styleClass="comboBox" stylesheets="@css/style.css" />
+                        <ComboBox prefHeight="32.0" promptText="Year Level" styleClass="comboBox" stylesheets="@css/style.css" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="b" mnemonicParsing="false" onAction="#clearFilter" styleClass="buttonRed" stylesheets="@css/style.css" text="Clear filter">
+                  <Button fx:id="b" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" onAction="#clearFilter" prefHeight="32.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Clear filter">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-               </children>
-            </FlowPane>
-            <TableView fx:id="tableView" editable="true" layoutY="130.0" onMouseClicked="#select" prefHeight="380.0" prefWidth="902.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-            <FlowPane alignment="BOTTOM_RIGHT" columnHalignment="CENTER" hgap="10.0" layoutX="538.0" layoutY="88.0" prefHeight="32.0" prefWidth="490.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Button fx:id="viewSelectedStudentBtn1" mnemonicParsing="false" onAction="#reloadTable" styleClass="buttonBlue" stylesheets="@css/style.css" text="Reset Table">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="viewSelectedStudentBtn" mnemonicParsing="false" onAction="#getSelectedStudent" styleClass="buttonBlue" stylesheets="@css/style.css" text="View Item">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" styleClass="buttonRed" stylesheets="@css/style.css" text="Export">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </FlowPane>
-            <FlowPane alignment="CENTER_LEFT" hgap="5.0" layoutX="2.0" prefHeight="76.0" prefWidth="902.0" styleClass="cardBlue" stylesheets="@css/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <padding>
-                  <Insets right="5.0" />
-               </padding>
-               <children>
-                  <Pane prefHeight="61.0" prefWidth="24.0" />
-                  <Label fx:id="studentsLabel" prefHeight="43.0" prefWidth="132.0" text="All Students">
-                     <font>
-                        <Font name="Segoe UI Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="studentsCountLabel" prefHeight="43.0" prefWidth="201.0" text="119 Students">
-                     <font>
-                        <Font name="Segoe UI Bold" size="18.0" />
-                     </font>
-                  </Label>
                </children>
             </FlowPane>
             <FlowPane alignment="CENTER_RIGHT" hgap="5.0" layoutX="664.0" layoutY="592.0" prefHeight="33.0" prefWidth="309.0" vgap="5.0" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="0.0" />
@@ -136,6 +94,41 @@
                   </HBox>
                </children>
             </HBox>
+            <TableView fx:id="tableView" editable="true" layoutY="80.0" onMouseClicked="#select" prefHeight="440.0" prefWidth="902.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <AnchorPane layoutX="634.0" layoutY="88.0" prefHeight="32.0" prefWidth="344.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="studentsCountLabel" layoutX="129.0" layoutY="-2.0" prefHeight="32.0" prefWidth="201.0" text="119 Students">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="studentsLabel" layoutY="-2.0" prefHeight="32.0" prefWidth="115.0" text="All Students">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <FlowPane alignment="CENTER_RIGHT" hgap="10.0" layoutX="502.0" layoutY="39.0" prefHeight="32.0" vgap="5.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button fx:id="resetButton" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" onAction="#reloadTable" prefHeight="32.0" prefWidth="110.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="Reload">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="viewSelectedStudentBtn" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" onAction="#getSelectedStudent" prefHeight="32.0" prefWidth="100.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="View">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="exportBtn" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Export">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </FlowPane>
          </children>
       </AnchorPane>
    </children>

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.sun.javafx.application.LauncherImpl;
 import java.sql.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -66,19 +67,12 @@ public class StudentManagementFxmlController implements Initializable {
                     {
                         if(passwordField.getText().equals(empPassw.get(empNames.indexOf(uname))))
                         {
+                            //LauncherImpl.launchApplication(StudentManagementFxmlController.class, NewFXPreloader.class, String[] args);
+                            
+                            
                             Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);
-                            
-                            /*
-                            Screen screen = Screen.getPrimary();
-                            Rectangle2D bounds = screen.getVisualBounds();
-                            
-                            stage.setX(bounds.getMinX());
-                            stage.setY(bounds.getMinY());
-                            stage.setWidth(bounds.getWidth());
-                            stage.setHeight(bounds.getHeight());
-                            */
                             
                             stage.setScene(scene);
                             stage.setMaximized(true);
@@ -86,6 +80,7 @@ public class StudentManagementFxmlController implements Initializable {
                             
                             Stage curr_stage = (Stage) loginButton.getScene().getWindow();
                             curr_stage.close();
+                            
                         }
                         else
                         {
@@ -162,5 +157,9 @@ public class StudentManagementFxmlController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+    public static void main(String[] args)
+    {
+        //LauncherImpl.launchApplication(StudentManagementFxmlController.class, NewFXPreloader.class, args);
+        //LauncherImpl.launchApplication(getClass(), NewFXPreloader.class, args);
+    }
 }

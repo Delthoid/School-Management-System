@@ -1,9 +1,15 @@
+/*Image*/
+
+
 .appbar {
 	-fx-background-color: #74b9ff;
 }
 .searchbox {
 	-fx-background-radius: 10px;
 	-fx-background-color: #0984e3;
+}
+.tableview {
+    -fx-border-color: transparent;
 }
 .comboBox {
     -fx-background-color: #dfe6e9;
@@ -29,7 +35,6 @@
 	-fx-max-height: 50px;
 	-fx-text-fill: white;
 }
-
 .buttonInactive
 {
 	-fx-background-color: #00000000;

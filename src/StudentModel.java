@@ -10,8 +10,11 @@ public class StudentModel
     private String firstName;
     private String lastName;
     private String middleName;
-    private int studentId;
     private String section;
+    private String email;
+    private String address;
+    private int studentId;
+    private int age;
     private int yearLevel;
     private int contact;
     
@@ -20,12 +23,8 @@ public class StudentModel
         
     }
     
-    public StudentModel(String firstName, String lastName, String middleName, int studentId, String section, int yearLevel, int contact)
+    public StudentModel(String firstName, String lastName, String middleName, int studentId, int age, String section, int yearLevel, int contact, String email, String address)
     {
-        /*this.firstName = new SimpleStringProperty(firstName);
-        this.lastName = new SimpleStringProperty(lastName);
-        this.studentId = new SimpleIntegerProperty(studentId);
-        */  
         this.firstName = firstName;
         this.lastName = lastName;
         this.studentId = studentId;
@@ -33,63 +32,31 @@ public class StudentModel
         this.yearLevel = yearLevel;
         this.contact = contact;
         this.middleName = middleName;
+        this.age = age;
+        this.email = email;
+        this.address = address;
     }
+    //Getters
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getSection() { return section; } 
+    public String getMiddleName() { return middleName; }
+    public String getEmail() { return email; }
+    public String getAddress() { return address; }
+    public int getStudentId() { return studentId; }
+    public int getYearLevel() { return yearLevel; }
+    public int getContact() { return contact; }
+    public int getAge() { return age; }
     
-    public String getFirstName()
-    {
-        return firstName;
-    }
-    public String getLastName()
-    {
-        return lastName;
-    }
-    public int getStudentId()
-    {
-        return studentId;
-    }
-    public String getSection()
-    {
-        return section;
-    }
-    public int getYearLevel()
-    {
-        return yearLevel;
-    }
-    public int getContact()
-    {
-        return contact;
-    }
-    public String getMiddleName()
-    {
-        return middleName;
-    }
-    
-    public void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
-    public void setLastName(String lastName)
-    {
-        this.lastName = lastName;
-    }
-    public void setStudentId(int studentId)
-    {
-        this.studentId = studentId;
-    }
-    public void setSection(String section)
-    {
-        this.section = section;
-    }
-    public void setYearLevel(int yearLevel)
-    {
-        this.yearLevel = yearLevel;
-    }
-    public void setContact(int contact)
-    {
-        this.contact = contact;
-    }
-    public void setMiddleName(String middleName)
-    {
-        this.middleName = middleName;
-    }
+    //Setters
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setSection(String section) { this.section = section; }
+    public void setMiddleName(String middleName) { this.middleName = middleName; }
+    public void setEmail(String email) { this.email = email; }
+    public void setAddress (String address) { this.address = address; }
+    public void setStudentId(int studentId) { this.studentId = studentId; }
+    public void setYearLevel(int yearLevel) { this.yearLevel = yearLevel; }
+    public void setContact(int contact) { this.contact = contact; }
+    public void setAge(int age) { this.age = age; }
 }

@@ -7,10 +7,13 @@
 import javafx.application.Preloader;
 import javafx.application.Preloader.ProgressNotification;
 import javafx.application.Preloader.StateChangeNotification;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * Simple Preloader Using the ProgressBar Control
@@ -19,33 +22,51 @@ import javafx.stage.Stage;
  */
 public class NewFXPreloader extends Preloader {
     
-    ProgressBar bar;
-    Stage stage;
+    private Stage preloaderStage;
+    private Scene scene;
     
-    private Scene createPreloaderScene() {
-        bar = new ProgressBar();
-        BorderPane p = new BorderPane();
-        p.setCenter(bar);
-        return new Scene(p, 300, 150);        
+    SplashScreenController splash = new SplashScreenController();
+    
+    public NewFXPreloader()
+    {
+        
+    }
+    
+    @Override
+    public void init() throws Exception
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("SplashScreen.fxml"));
+        scene = new Scene(root);
     }
     
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        stage.setScene(createPreloaderScene());        
-        stage.show();
+        this.preloaderStage = stage;
+        
+        //Set preloader stage scene and show stage
+        preloaderStage.setScene(scene);
+        preloaderStage.initStyle(StageStyle.UNDECORATED);
+        preloaderStage.show();
     }
     
     @Override
     public void handleStateChangeNotification(StateChangeNotification scn) {
-        if (scn.getType() == StateChangeNotification.Type.BEFORE_START) {
-            stage.hide();
+        StateChangeNotification.Type type = scn.getType();
+        switch(type)
+        {
+            case BEFORE_START:
+                //Called after init and before start is called
+                System.out.println("BEFORE START");
+                preloaderStage.hide();
+                break;
         }
     }
     
     @Override
     public void handleProgressNotification(ProgressNotification pn) {
-        bar.setProgress(pn.getProgress());
+        if(pn instanceof ProgressNotification){
+            splash.progressbar.setProgress(pn.getProgress());
+        }
     }    
     
 }
