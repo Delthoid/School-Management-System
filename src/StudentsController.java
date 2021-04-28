@@ -37,6 +37,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class StudentsController implements Initializable {
@@ -122,7 +123,10 @@ public class StudentsController implements Initializable {
         //Call connect to db class
         for(int i = 0; i < sList.studentsId.size(); i++)
         {
-            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.mNames.get(i),sList.studentsId.get(i), sList.ages.get(i),sList.sections.get(i), sList.yearLevels.get(i), sList.contacts.get(i), sList.emails.get(i), sList.addresses.get(i)));
+            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.mNames.get(i),
+                                      sList.studentsId.get(i), sList.ages.get(i),sList.sections.get(i), 
+                                      sList.yearLevels.get(i), sList.contacts.get(i), sList.emails.get(i), 
+                                      sList.addresses.get(i), sList.enrolledDates.get(i), sList.guardians.get(i)));
         }
         //Create columns
         TableColumn studentIdCol = new TableColumn("Student ID");
@@ -219,11 +223,16 @@ public class StudentsController implements Initializable {
            SelectedProfile profile = new SelectedProfile();
            profile.setLastName(tableView.getSelectionModel().getSelectedItem().getLastName());
            profile.setFirstName(tableView.getSelectionModel().getSelectedItem().getFirstName());
-           profile.setMInitial(tableView.getSelectionModel().getSelectedItem().getMiddleName().charAt(0) + ".");
+           profile.setMiddleName(tableView.getSelectionModel().getSelectedItem().getMiddleName());
            profile.setStudentId(tableView.getSelectionModel().getSelectedItem().getStudentId());
            profile.setAge(tableView.getSelectionModel().getSelectedItem().getAge());
            profile.setEmail(tableView.getSelectionModel().getSelectedItem().getEmail());
            profile.setAddress(tableView.getSelectionModel().getSelectedItem().getAddress());
+           profile.setContact(tableView.getSelectionModel().getSelectedItem().getContact());
+           profile.setYear(tableView.getSelectionModel().getSelectedItem().getYearLevel());
+           profile.setSection(tableView.getSelectionModel().getSelectedItem().getSection());
+           profile.setEnrolledDate(tableView.getSelectionModel().getSelectedItem().getEnrolledDate());
+           profile.setGuardian(tableView.getSelectionModel().getSelectedItem().getGuardian());
             
            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("StudentInfoViewer.fxml"));
            Scene scene = new Scene(root);

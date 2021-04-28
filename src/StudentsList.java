@@ -13,4 +13,6 @@ public class StudentsList {
     public static ArrayList<Integer> ages = new ArrayList<Integer>();
     public static ArrayList<String> emails = new ArrayList<String>();
     public static ArrayList<String> addresses = new ArrayList<String>();
+    public static ArrayList<String> enrolledDates = new ArrayList<String>();
+    public static ArrayList<String> guardians = new ArrayList<String>();
 }

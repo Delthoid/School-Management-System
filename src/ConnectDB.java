@@ -54,6 +54,8 @@ public class ConnectDB {
                     sList.yearLevels.add(rs.getInt(13));
                     sList.emails.add(rs.getString(8));
                     sList.addresses.add(rs.getString(16));
+                    sList.enrolledDates.add(rs.getDate(15).toString());
+                    sList.guardians.add(rs.getString(9));
                     //Age is sample only
                     sList.ages.add(20);
                 }
@@ -74,6 +76,8 @@ public class ConnectDB {
                     sList.yearLevels.add(rs.getInt(13));
                     sList.emails.add(rs.getString(8));
                     sList.addresses.add(rs.getString(16));
+                    sList.enrolledDates.add(rs.getDate(15).toString());
+                    sList.guardians.add(rs.getString(9));
                     //Age is sample only
                     sList.ages.add(20);
                 }

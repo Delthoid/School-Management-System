@@ -13,6 +13,8 @@ public class StudentModel
     private String section;
     private String email;
     private String address;
+    private String enrolledDate;
+    private String guardian;
     private int studentId;
     private int age;
     private int yearLevel;
@@ -23,7 +25,10 @@ public class StudentModel
         
     }
     
-    public StudentModel(String firstName, String lastName, String middleName, int studentId, int age, String section, int yearLevel, int contact, String email, String address)
+    public StudentModel(String firstName, String lastName, String middleName, 
+            int studentId, int age, String section, 
+            int yearLevel, int contact, String email, 
+            String address, String enrolledDate, String guardian)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,6 +40,8 @@ public class StudentModel
         this.age = age;
         this.email = email;
         this.address = address;
+        this.enrolledDate = enrolledDate;
+        this.guardian = guardian;
     }
     //Getters
     public String getFirstName() { return firstName; }
@@ -43,6 +50,8 @@ public class StudentModel
     public String getMiddleName() { return middleName; }
     public String getEmail() { return email; }
     public String getAddress() { return address; }
+    public String getEnrolledDate() { return enrolledDate; }
+    public String getGuardian() { return guardian; }
     public int getStudentId() { return studentId; }
     public int getYearLevel() { return yearLevel; }
     public int getContact() { return contact; }
@@ -55,6 +64,8 @@ public class StudentModel
     public void setMiddleName(String middleName) { this.middleName = middleName; }
     public void setEmail(String email) { this.email = email; }
     public void setAddress (String address) { this.address = address; }
+    public void setEnrolledDate(String date) { this.enrolledDate = date; }
+    public void setGuardian(String guardian) { this.guardian = guardian;}
     public void setStudentId(int studentId) { this.studentId = studentId; }
     public void setYearLevel(int yearLevel) { this.yearLevel = yearLevel; }
     public void setContact(int contact) { this.contact = contact; }

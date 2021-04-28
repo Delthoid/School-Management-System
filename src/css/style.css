@@ -1,5 +1,7 @@
 /*Image*/
-
+.root {
+    -fx-background-color: transparent;
+}
 
 .appbar {
 	-fx-background-color: #74b9ff;
@@ -27,6 +29,70 @@
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
+
+.textBox {
+    -fx-background-radius: 10px;
+    -fx-text-fill: #636e72;
+}
+.textBox:focused {
+    -fx-background-radius: 10px;
+    -fx-text-fill: #636e72;
+    -fx-border-color: #2d3436;
+    -fx-border-radius: 10px;
+}
+.textBoxEditMode {
+    -fx-background-radius: 10px;
+    -fx-text-fill: #2d3436;
+}
+.textBoxEditMode:focused {
+    -fx-background-radius: 10px;
+    -fx-text-fill: #2d3436;
+    -fx-border-color: #2d3436;
+    -fx-border-radius: 10px;
+}
+@font-face {
+	font-family: 'Poppins';
+	src: url('../fonts/Poppins-Medium.otf');
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat/Montserrat-Medium.ttf');
+}
+.popins {
+	-fx-font-family: 'Montserrat';
+}
+.mont {
+
+}
+/*Cards*/
+.card
+{
+	-fx-background-radius: 10px;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+}
+.cardwithBorder
+{
+	-fx-background-radius: 10px;
+	/*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);*/
+        -fx-border-color: #777672;
+        -fx-border-radius: 10px;
+}
+.cardBlue
+{
+	-f-text-color: white;
+	-fx-background-color: #CAF0F8;
+	-fx-background-radius: 10px;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+}
+.id {
+	-fx-background-radius: 20px;
+	-fx-background-color: #9BF6FF;
+}
+
+.pic {
+	-fx-backgound-radius: 10px;
+}
+/*Buttons*/
 .button
 {
 	-fx-background-radius: 5px;
@@ -45,49 +111,9 @@
 	-fx-text-fill: white;
 
 }
-.textBox {
-	-fx-background-radius: 10px;
-}
-
-@font-face {
-	font-family: 'Poppins';
-	src: url('../fonts/Poppins-Medium.otf');
-}
-@font-face {
-	font-family: 'Montserrat';
-	src: url('../fonts/Montserrat/Montserrat-Medium.ttf');
-}
-.popins {
-	-fx-font-family: 'Montserrat';
-}
-.mont {
-
-}
-.card
-{
-	
-	-fx-background-radius: 10px;
-	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
-}
-.cardBlue
-{
-	-f-text-color: white;
-	-fx-background-color: #CAF0F8;
-	-fx-background-radius: 10px;
-	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
-}
-.id {
-	-fx-background-radius: 20px;
-	-fx-background-color: #9BF6FF;
-}
-
-.pic {
-	-fx-backgound-radius: 10px;
-}
-/*Buttons*/
 .buttonRed
 {
-	-fx-background-color: #FF8181;
+	-fx-background-color: #ff7675;
 	-fx-background-radius: 5px;
 	-fx-max-width: 300px;
 	-fx-max-height: 50px;
@@ -95,7 +121,8 @@
 }
 .buttonBlue
 {
-	-fx-background-color: #73A9FF;
+	-fx-background-color: #0984e3;
+        /*-fx-background-color: #73A9FF;*/
 	-fx-border-radius: 5px;
 	-fx-max-width: 300px;
 	-fx-max-height: 50px;
@@ -104,6 +131,16 @@
 .buttonOrange
 {
 	-fx-background-color: #FFC278;
+        /*-fx-background-color: #FFC278;*/
+	-fx-border-radius: 5px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+}
+.buttonYellow
+{
+	-fx-background-color: #FFC278;
+        /*-fx-background-color: #FFC278;*/
 	-fx-border-radius: 5px;
 	-fx-max-width: 300px;
 	-fx-max-height: 50px;
@@ -116,5 +153,5 @@
 	-fx-max-width: 300px;
 	-fx-max-height: 50px;
 	-fx-text-fill: white;
-
 }
+/*Window*/

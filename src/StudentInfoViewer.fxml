@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -8,25 +7,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="1000.0" style="-fx-background-color: F5F5F5;" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInfoPageController">
-    <stylesheets>
-        <URL value="@/css/style.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="654.0" prefWidth="1000.0" style="-fx-background-color: F5F5F5;" styleClass="mainFxmlClass" stylesheets="@/css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInfoPageController">
    <children>
-      <ScrollPane layoutX="24.0" layoutY="55.0" prefHeight="217.0" prefWidth="952.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="55.0">
+      <ScrollPane layoutX="24.0" layoutY="23.0" prefHeight="217.0" prefWidth="952.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="23.0">
          <content>
             <HBox prefHeight="200.0" prefWidth="714.0" spacing="10.0">
                <children>
-                  <AnchorPane prefHeight="187.0" prefWidth="504.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@css/style.css">
+                  <AnchorPane prefHeight="187.0" prefWidth="504.0" style="-fx-background-color: white;" styleClass="cardwithBorder" stylesheets="@css/style.css">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="197.0" prefWidth="504.0" spacing="24.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="197.0" prefWidth="550.0" spacing="24.0">
                            <children>
                               <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/delthon%20pogi.jpg" />
                                  </image>
                               </ImageView>
-                              <VBox prefHeight="97.0" prefWidth="306.0" spacing="3.0">
+                              <VBox prefHeight="167.0" prefWidth="346.0" spacing="3.0">
                                  <children>
                                     <Label fx:id="fullNameLabel" text="Lastname, Firstname M.">
                                        <font>
@@ -53,9 +49,9 @@
                                           <Font name="Segoe UI" size="14.0" />
                                        </font>
                                     </Label>
-                                    <HBox spacing="10.0">
+                                    <HBox fx:id="buttonsLoc" spacing="10.0">
                                        <children>
-                                          <Button fx:id="editButton" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" prefHeight="32.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="Edit Profile">
+                                          <Button fx:id="editButton" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" onAction="#handleEditBtn" prefHeight="32.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="Edit Profile">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
@@ -73,6 +69,22 @@
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="cancelButton" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" onAction="#handleCancelBtn" prefHeight="32.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Cancel">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="updateButton" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" prefHeight="32.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="Update changes">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -168,175 +180,223 @@
             </HBox>
          </content>
       </ScrollPane>
-      <ScrollPane fitToWidth="true" layoutX="24.0" layoutY="271.0" prefHeight="418.0" prefWidth="952.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="271.0">
+      <ScrollPane fitToWidth="true" layoutX="24.0" layoutY="239.0" prefHeight="411.0" prefWidth="952.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="239.0">
          <content>
             <VBox prefHeight="398.0" prefWidth="937.0" spacing="5.0" style="-fx-background-color: transparent;">
                <children>
                   <Label text="More Information">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                   <AnchorPane prefHeight="369.0" prefWidth="967.0" style="-fx-background-color: fffffc;" styleClass="card" stylesheets="@css/style.css">
                      <children>
-                        <TextField editable="false" layoutX="14.0" layoutY="34.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="delthonvillanueva20@gmail.com">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="14.0" layoutY="14.0" text="Student ID">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="14.0" layoutY="104.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="Villanueva">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="14.0" layoutY="84.0" text="Last name">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="14.0" layoutY="174.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="Delthon">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="14.0" layoutY="154.0" text="First name">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="14.0" layoutY="244.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="Ramos">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="14.0" layoutY="224.0" text="Middle name">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="14.0" layoutY="314.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="delts@gg.com">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="14.0" layoutY="294.0" text="Email">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="305.0" layoutY="34.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="Cainta, Rizal">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="305.0" layoutY="14.0" text="Address">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="305.0" layoutY="104.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="0987812">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="305.0" layoutY="84.0" text="Contact number">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="305.0" layoutY="174.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="1st Year">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="305.0" layoutY="154.0" text="Year level">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="305.0" layoutY="244.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="BBSH - 1222">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="305.0" layoutY="224.0" text="Section">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="305.0" layoutY="314.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="March 10, 2021">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="305.0" layoutY="294.0" text="Enrolled date">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="572.0" layoutY="34.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css" text="Zhongli">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Segoe UI Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="572.0" layoutY="14.0" text="Guardian">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        <HBox layoutX="528.0" layoutY="26.0" minWidth="500.0" prefHeight="336.0" prefWidth="655.0" spacing="32.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <children>
+                              <VBox fx:id="fieldsHolder" prefHeight="333.0" prefWidth="224.0" spacing="2.0">
+                                 <children>
+                                    <Label text="Student ID">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="idField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Last name">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="lastNameField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="First name">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="firstNameField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Middle name">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="middleNameField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Email address">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="emailField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="fieldsHolderB" prefHeight="333.0" prefWidth="224.0" spacing="2.0">
+                                 <children>
+                                    <Label text="Address">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="addressField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Contact number">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="contactField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Year Level">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="yearLevelField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Section">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="sectionField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Enrolled date">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="enrolledField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="fieldsHolderC" prefHeight="333.0" prefWidth="224.0" spacing="2.0">
+                                 <children>
+                                    <Label text="Guardian">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="guardianField" editable="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: E9ECEF;" styleClass="textBox" stylesheets="@css/style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
          </content>
       </ScrollPane>
-      <AnchorPane layoutX="-12.0" layoutY="-2.0" prefHeight="58.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
-         <children>
-            <Button fx:id="closeButton" contentDisplay="GRAPHIC_ONLY" layoutX="939.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" styleClass="buttonRed" stylesheets="@css/style.css" text="Edit Profile" AnchorPane.rightAnchor="14.0">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <ComboBox layoutX="21.0" layoutY="14.0" promptText="Navigate to" styleClass="comboBox" stylesheets="@css/style.css" />
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

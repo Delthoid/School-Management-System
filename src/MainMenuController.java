@@ -58,6 +58,7 @@ public class MainMenuController implements Initializable {
         mainPanel.getChildren().setAll(dashboardPane);
         studentsBtn.getStyleClass().removeAll("buttonSidebarActive");
         studentsBtn.getStyleClass().add("buttonInactive");
+        dashboardBtn.getStyleClass().add("-fx-font-weight: bold");
         dashboardBtn.getStyleClass().add("buttonSidebarActive");
         
     }
@@ -67,6 +68,7 @@ public class MainMenuController implements Initializable {
         mainPanel.getChildren().setAll(studentsPane);
         dashboardBtn.getStyleClass().removeAll("buttonSidebarActive");
         dashboardBtn.getStyleClass().add("buttonInactive");
+        studentsBtn.getStyleClass().add("-fx-font-weight: bold");
         studentsBtn.getStyleClass().add("buttonSidebarActive");
         
     }

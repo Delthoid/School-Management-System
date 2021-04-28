@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 /**
@@ -48,7 +51,14 @@ public class StudentInfoPageController implements Initializable {
     
     @FXML Button editButton;
     @FXML Button archiveButton;
-    @FXML Button closeButton;
+    @FXML Button cancelButton;
+    @FXML Button updateButton;
+    
+    @FXML HBox buttonsLoc;
+    
+    @FXML VBox fieldsHolder;
+    @FXML VBox fieldsHolderB;
+    @FXML VBox fieldsHolderC;
     
     public static String fullName = "";
     
@@ -57,7 +67,11 @@ public class StudentInfoPageController implements Initializable {
         //Adding icons to buttons
         editButton.setGraphic(new ImageView("icons/edit.png"));
         archiveButton.setGraphic(new ImageView("icons/archive.png"));
-        closeButton.setGraphic(new ImageView("icons/clear.png"));
+        updateButton.setGraphic(new ImageView("icons/update.png"));
+        
+        //Hide these buttons at startup
+        buttonsLoc.getChildren().remove(updateButton);
+        buttonsLoc.getChildren().remove(cancelButton);
         
          // set a clip to apply rounded border to the original image.
         Rectangle clip = new Rectangle(imageView.getFitWidth(), imageView.getFitHeight());
@@ -84,11 +98,99 @@ public class StudentInfoPageController implements Initializable {
     {
         SelectedProfile profile = new SelectedProfile();
         
-        fullNameLabel.setText(profile.getLastName() + ", " + profile.getFirstName() + " " + profile.getmInitial());
+        //Label
+        fullNameLabel.setText(profile.getLastName() + ", " + profile.getFirstName() + " " + profile.getMiddleName().charAt(0));
         idLabel.setText(profile.getId() + "");
         ageLabel.setText(profile.getAge() + " years old");
         emailLabel.setText(profile.getEmail());
         addressLabel.setText(profile.getAddress());
+        
+        //Fields
+        idField.setText(profile.getId() + "");
+        lastNameField.setText(profile.getLastName());
+        firstNameField.setText(profile.getFirstName());
+        middleNameField.setText(profile.getMiddleName());
+        emailField.setText(profile.getEmail());
+        addressField.setText(profile.getAddress());
+        contactField.setText(profile.getContact() + "");
+        yearLevelField.setText(profile.getYear() + "");
+        sectionField.setText(profile.getSection());
+        enrolledField.setText(profile.getEnrolledDate());
+        guardianField.setText(profile.getGuardian());
+    }
+    public void handleEditBtn()
+    {
+        buttonsLoc.getChildren().add(cancelButton);
+        buttonsLoc.getChildren().add(updateButton);
+        
+        buttonsLoc.getChildren().remove(editButton);
+        buttonsLoc.getChildren().remove(archiveButton);
+        
+        //Get all the textFields on VBox
+        for(Object o: fieldsHolder.getChildren())
+        {
+            if(o.getClass().toString().contains("javafx.scene.control.TextField")){
+                TextField tf = (TextField) o;
+                tf.setEditable(true);
+                tf.getStyleClass().removeAll("textBox");
+                tf.getStyleClass().add("textBoxEditMode");
+            }
+        }
+        for(Object o: fieldsHolderB.getChildren())
+        {
+            if(o.getClass().toString().contains("javafx.scene.control.TextField")){
+                TextField tf = (TextField) o;
+                tf.setEditable(true);
+                tf.getStyleClass().removeAll("textBox");
+                tf.getStyleClass().add("textBoxEditMode");
+            }
+        }
+        for(Object o: fieldsHolderC.getChildren())
+        {
+            if(o.getClass().toString().contains("javafx.scene.control.TextField")){
+                TextField tf = (TextField) o;
+                tf.setEditable(true);
+                tf.getStyleClass().removeAll("textBox");
+                tf.getStyleClass().add("textBoxEditMode");
+            }
+        }
+    }
+    public void handleCancelBtn()
+    {
+        buttonsLoc.getChildren().remove(cancelButton);
+        buttonsLoc.getChildren().remove(updateButton);
+        
+        buttonsLoc.getChildren().add(editButton);
+        buttonsLoc.getChildren().add(archiveButton);
+        
+        //Get all the textFields on VBox
+        for(Object o: fieldsHolder.getChildren())
+        {
+            if(o.getClass().toString().contains("javafx.scene.control.TextField")){
+                TextField tf = (TextField) o;
+                tf.setEditable(false);
+                tf.getStyleClass().add("textBox");
+                tf.getStyleClass().removeAll("textBoxEditMode");
+            }
+        }
+        for(Object o: fieldsHolderB.getChildren())
+        {
+            if(o.getClass().toString().contains("javafx.scene.control.TextField")){
+                TextField tf = (TextField) o;
+                tf.setEditable(false);
+                tf.getStyleClass().add("textBox");
+                tf.getStyleClass().removeAll("textBoxEditMode");
+            }
+        }
+        for(Object o: fieldsHolderC.getChildren())
+        {
+            if(o.getClass().toString().contains("javafx.scene.control.TextField")){
+                TextField tf = (TextField) o;
+                tf.setEditable(false);
+                tf.getStyleClass().add("textBox");
+                tf.getStyleClass().removeAll("textBoxEditMode");
+            }
+        }
     }
     public void hello()
     {
