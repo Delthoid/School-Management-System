@@ -110,8 +110,17 @@
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <FlowPane alignment="CENTER_RIGHT" hgap="10.0" layoutX="502.0" layoutY="39.0" prefHeight="32.0" vgap="5.0" AnchorPane.rightAnchor="0.0">
+            <FlowPane alignment="CENTER_RIGHT" hgap="10.0" layoutX="502.0" layoutY="39.0" maxHeight="32.0" prefHeight="32.0" prefWidth="541.0" vgap="5.0" AnchorPane.rightAnchor="0.0">
                <children>
+                  <FlowPane alignment="CENTER" prefHeight="32.0" prefWidth="138.0" styleClass="successcard" stylesheets="@css/style.css">
+                     <children>
+                        <Label text="Table reloaded">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
                   <Button fx:id="resetButton" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" onAction="#reloadTable" prefHeight="32.0" prefWidth="110.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="Reload">
                      <font>
                         <Font name="System Bold" size="14.0" />

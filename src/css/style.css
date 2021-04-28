@@ -65,6 +65,13 @@
 
 }
 /*Cards*/
+.successcard {
+    -fx-background-radius: 10px;
+    -fx-background-color: #55efc4;
+    -fx-border-color: #00b894;
+    -fx-border-radius: 10px;
+    -fx-text-fill: #00b894;
+}
 .card
 {
 	-fx-background-radius: 10px;
