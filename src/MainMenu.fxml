@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
     <stylesheets>
         <URL value="@/css/style.css" />
     </stylesheets>
    <children>
-      <VBox prefHeight="725.0" prefWidth="230.0" spacing="5.0" style="-fx-background-color: #073B4C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="buttonsPane" prefHeight="725.0" prefWidth="230.0" spacing="5.0" style="-fx-background-color: #073B4C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -46,6 +46,16 @@
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Button>
+            <Button fx:id="enrolleeQueueBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadEnrollmentQ" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Enrollment Queue">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="attendanceBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Attendance">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </Button>
             <Button fx:id="adminSettingsBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadAdminSettings" prefHeight="40.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Admin Settings">
                <font>
                   <Font name="Segoe UI" size="14.0" />
@@ -56,11 +66,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <VBox layoutX="229.0" prefHeight="720.0" prefWidth="1053.0" style="-fx-background-color: F8F9FA;" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <AnchorPane fx:id="mainPanel" prefHeight="738.0" prefWidth="1050.0" style="-fx-background-color: F8F9FA;" />
-         </children>
-      </VBox>
+      <AnchorPane fx:id="mainPanel" layoutX="230.0" prefHeight="738.0" prefWidth="820.0" style="-fx-background-color: F8F9FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Button fx:id="logoutBtn" alignment="BASELINE_LEFT" layoutY="685.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="230.0" styleClass="buttonInactive" stylesheets="@css/style.css" text="Logout" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font name="Segoe UI" size="14.0" />

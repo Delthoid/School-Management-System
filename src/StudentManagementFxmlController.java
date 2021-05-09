@@ -153,6 +153,26 @@ public class StudentManagementFxmlController implements Initializable {
         }
         return con_stat;
     }
+    public void debug()
+    {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("EnrollmentQueue.fxml"));
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+                            
+                            stage.setScene(scene);
+                            stage.setMaximized(true);
+                            stage.show();
+                            
+                            Stage curr_stage = (Stage) loginButton.getScene().getWindow();
+                            curr_stage.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

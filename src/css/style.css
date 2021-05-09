@@ -17,12 +17,14 @@
     -fx-background-color: #dfe6e9;
     -fx-background-radius: 5px;
     -fx-font-size: 14px;
+    -fx-text-fill: #2d3436;
 }
 .comboBoxBold {
     -fx-background-color: #dfe6e9;
     -fx-background-radius: 5px;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+    -fx-text-fill: #2d3436;
 }
 .card_background {
     -fx-background-color: #00BBF9;
@@ -33,6 +35,7 @@
 .textBox {
     -fx-background-radius: 10px;
     -fx-text-fill: #636e72;
+    -fx-background-color: #E9ECEF;
 }
 .textBox:focused {
     -fx-background-radius: 10px;
@@ -43,12 +46,14 @@
 .textBoxEditMode {
     -fx-background-radius: 10px;
     -fx-text-fill: #2d3436;
+    -fx-background-color: #E9ECEF;
 }
 .textBoxEditMode:focused {
     -fx-background-radius: 10px;
     -fx-text-fill: #2d3436;
     -fx-border-color: #2d3436;
     -fx-border-radius: 10px;
+    -fx-background-color: #E9ECEF;
 }
 @font-face {
 	font-family: 'Poppins';
@@ -66,11 +71,10 @@
 }
 /*Cards*/
 .successcard {
-    -fx-background-radius: 10px;
+    -fx-background-radius: 5px;
     -fx-background-color: #55efc4;
     -fx-border-color: #00b894;
-    -fx-border-radius: 10px;
-    -fx-text-fill: #00b894;
+    -fx-border-radius: 5px;
 }
 .card
 {
@@ -83,6 +87,13 @@
 	/*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);*/
         -fx-border-color: #777672;
         -fx-border-radius: 10px;
+}
+.cardBlue
+{
+	-f-text-color: white;
+	-fx-background-color: #CAF0F8;
+	-fx-background-radius: 10px;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
 }
 .cardBlue
 {
@@ -144,6 +155,16 @@
 	-fx-max-height: 50px;
 	-fx-text-fill: white;
 }
+.buttonGreen
+{
+	-fx-background-color: #00b894;
+        /*-fx-background-color: #FFC278;*/
+	-fx-border-radius: 5px;
+	-fx-max-width: 300px;
+	-fx-max-height: 50px;
+	-fx-text-fill: white;
+}
+
 .buttonYellow
 {
 	-fx-background-color: #FFC278;

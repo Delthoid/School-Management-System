@@ -61,7 +61,7 @@ public class StudentInfoPageController implements Initializable {
     @FXML VBox fieldsHolderC;
     
     public static String fullName = "";
-    private int targetId;
+    public int targetId;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -125,17 +125,7 @@ public class StudentInfoPageController implements Initializable {
         
         SelectedProfile profile = new SelectedProfile();
         targetId = profile.getId();
-        
-        /*
-         public void update(
-            int id,
-            String lname, String fname, String mname,
-            String email, String address, int contact,
-            int level, String section, String enDate,
-            String guardian
-    )
-        */
-        
+
         conn.update(
                 targetId,
                 lastNameField.getText(), firstNameField.getText(), middleNameField.getText(),
@@ -143,6 +133,8 @@ public class StudentInfoPageController implements Initializable {
                 Integer.parseInt(yearLevelField.getText()), sectionField.getText(), enrolledField.getText(),
                 guardianField.getText()
         );
+        //Will use only the function to diable edit mode
+        handleCancelBtn();
     }
     public void handleEditBtn()
     {

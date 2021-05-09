@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1081.0" style="-fx-background-color: F8F9FA;" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EnrollmentQueueController">
+    <stylesheets>
+        <URL value="@/css/style.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="38.0" prefWidth="951.0" stylesheets="@../../../Student%20Management%20System%20FX/src/studentmgmt/css/style.css" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <Label layoutY="2.0" prefHeight="42.0" text="Enrollment Queue">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="56.0" prefHeight="580.0" prefWidth="972.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="64.0">
+         <children>
+            <VBox prefHeight="572.0" prefWidth="184.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="187.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/businessman-character-avatar-isolated_24877-60111.jpg" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="Enrolee Number" />
+                  <Label prefHeight="27.0" prefWidth="191.0" text="192">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Student Id" />
+                  <Label prefHeight="27.0" prefWidth="191.0" text="100009822">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Application Date" />
+                  <Label prefHeight="27.0" prefWidth="191.0" text="March 10, 2021">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Label text="Actions" />
+                        <Button mnemonicParsing="false" prefWidth="200.0" styleClass="buttonGreen" stylesheets="@css/style.css" text="Approve Application">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="200.0" styleClass="buttonGreen" stylesheets="@css/style.css" text="Move to Pending">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="200.0" styleClass="buttonGreen" stylesheets="@css/style.css" text="Action 2">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+            <GridPane hgap="10.0" layoutX="198.0" layoutY="-1.0" prefHeight="572.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="411.0" minWidth="10.0" prefWidth="394.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="370.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ScrollPane prefHeight="557.0" prefWidth="411.0" style="-fx-background-color: transparent;" stylesheets="@css/style.css">
+                     <content>
+                        <VBox prefHeight="620.0" prefWidth="394.0" spacing="10.0" style="-fx-background-color: F8F9FA;">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="377.0" style="-fx-background-color: fffffc;" styleClass="card" stylesheets="@css/style.css">
+                                 <children>
+                                    <VBox layoutX="32.0" layoutY="-14.0" prefHeight="503.0" prefWidth="382.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label prefWidth="362.0" text="Requirements" textFill="#636e72">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                             <children>
+                                                <VBox prefHeight="95.0" prefWidth="175.0" spacing="5.0">
+                                                   <children>
+                                                      <Label prefHeight="32.0" prefWidth="362.0" text="Enrollment Fee" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="32.0" prefWidth="362.0" text="Requirement 2" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="32.0" prefWidth="362.0" text="Requirement 3" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="32.0" prefWidth="362.0" text="Requirement 4" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="32.0" prefWidth="362.0" text="Requirement 5" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="32.0" prefWidth="362.0" text="Requirement 6" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="32.0" prefWidth="362.0" text="Requirement 6" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="10.0" layoutY="190.0" prefHeight="32.0" prefWidth="362.0" text="Requirement 7" textFill="#636e72">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="95.0" prefWidth="146.0" spacing="5.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" styleClass="buttonGreen" stylesheets="@css/style.css" text="Completed" />
+                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" styleClass="buttonYellow" stylesheets="@css/style.css" text="Processing" />
+                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" styleClass="buttonRed" stylesheets="@css/style.css" text="No data" />
+                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" styleClass="buttonGreen" stylesheets="@css/style.css" text="Compeleted" />
+                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="To verify" />
+                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="To verify" />
+                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" styleClass="buttonBlue" stylesheets="@css/style.css" text="To verify" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="339.0" prefWidth="382.0" style="-fx-background-color: fffffc;" styleClass="card" stylesheets="@css/style.css">
+                                 <children>
+                                    <VBox layoutX="32.0" layoutY="-14.0" prefHeight="200.0" prefWidth="382.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label prefWidth="362.0" text="Quick Information" textFill="#636e72">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefWidth="362.0" text="Full name" textFill="#636e72">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label prefWidth="473.0" text="Villanueva, Delthon R. Jr." textFill="#2d3436">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefWidth="362.0" text="Birthday" textFill="#636e72">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label prefWidth="473.0" text="October 20, 2000" textFill="#2d3436">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefWidth="362.0" text="Birthplace" textFill="#636e72">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label prefWidth="473.0" text="Brgy. Villa San Isidro Calauag, Quezon" textFill="#2d3436">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefWidth="362.0" text="Contact Number" textFill="#636e72">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label prefWidth="473.0" text="0961 218 2132" textFill="#2d3436">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefWidth="362.0" text="Email address" textFill="#636e72">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label prefWidth="473.0" text="delehehehehe@gmail.com" textFill="#2d3436">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefWidth="362.0" text="Year" textFill="#636e72">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label prefWidth="473.0" text="2nd Year" textFill="#2d3436">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefWidth="362.0" text="Section" textFill="#636e72">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label prefWidth="473.0" text="BSIT 203" textFill="#2d3436">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane fitToWidth="true" minWidth="300.0" prefHeight="572.0" prefWidth="379.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
+                     <content>
+                        <VBox prefHeight="566.0" prefWidth="442.0" spacing="10.0">
+                           <children>
+                              <AnchorPane prefHeight="465.0" prefWidth="442.0" style="-fx-background-color: fffffc;" styleClass="card" stylesheets="@css/style.css">
+                                 <children>
+                                    <VBox fx:id="queuePane" layoutX="33.0" layoutY="47.0" prefHeight="365.0" prefWidth="442.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox prefHeight="24.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="30.0" text="Queue" textFill="#636e72">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button mnemonicParsing="false" onAction="#loadQueue" styleClass="buttonGreen" stylesheets="@css/style.css" text="Reload">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font></Button>
+                                                <Button mnemonicParsing="false" styleClass="buttonBlue" stylesheets="@css/style.css" text="View">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="450.0" prefWidth="442.0" style="-fx-background-color: fffffc;" styleClass="card" stylesheets="@css/style.css">
+                                 <children>
+                                    <VBox layoutX="33.0" layoutY="47.0" prefHeight="365.0" prefWidth="442.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="30.0" text="Pending Appliaction List" textFill="#636e72">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button mnemonicParsing="false" styleClass="buttonBlue" stylesheets="@css/style.css" text="View" />
+                                             </children>
+                                          </HBox>
+                                          <TableView prefHeight="345.0" prefWidth="422.0">
+                                             <columns>
+                                                <TableColumn prefWidth="75.0" text="C1" />
+                                                <TableColumn prefWidth="75.0" text="C2" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

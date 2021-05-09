@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
@@ -35,9 +37,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 
 
 public class StudentsController implements Initializable {
@@ -50,13 +54,15 @@ public class StudentsController implements Initializable {
     @FXML public TableColumn<StudentModel, Integer> studentIdCol; 
     @FXML public TableColumn<StudentModel, String> firstNameCol;
     @FXML public TableColumn<StudentModel, String> lastNameCol;
-    @FXML private Button viewSelectedStudentBtn;
     @FXML private Slider viewSlider;
     @FXML private AnchorPane thisPane;
     @FXML private Button studentInfoButton;
     
-    @FXML private Button resetButton;
+    @FXML private Button reloadButton;
     @FXML private Button exportBtn;
+    
+    @FXML private FlowPane updateNotif;
+    @FXML private FlowPane buttonsPane;
     
     //Public datatypes
     public int selectedStudentId = 0;
@@ -76,13 +82,13 @@ public class StudentsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Add icons to buttpns
         b.setGraphic(new ImageView("icons/clear.png"));
-        resetButton.setGraphic(new ImageView("icons/reset.png"));
-        viewSelectedStudentBtn.setGraphic(new ImageView("icons/view.png"));
+        reloadButton.setGraphic(new ImageView("icons/reset.png"));
         exportBtn.setGraphic(new ImageView("icons/export.png"));
         
+        updateNotif.setVisible(false);
+        
         //Set the preferred height of buttons to 32 to fix the height and expandinf issue
-        resetButton.setPrefSize(resetButton.getPrefWidth(), 32);
-        viewSelectedStudentBtn.setPrefSize(viewSelectedStudentBtn.getPrefWidth(), 32);
+        reloadButton.setPrefSize(reloadButton.getPrefWidth(), 32);
         exportBtn.setPrefSize(exportBtn.getPrefWidth(), 32);
         b.setPrefSize(b.getPrefWidth(), 32);
         
@@ -97,13 +103,31 @@ public class StudentsController implements Initializable {
         
         loadTable();
     }
-    public void reloadTable()
+    public void reloadTable()throws InterruptedException
     {
         resetTable();
         ConnectDB connect = new ConnectDB();
         connect.connect("SELECT * FROM tbl_students", "LOAD STUDENTS");
-        loadTable();
+ 
+        EntriesCount eCount = new EntriesCount();
+        int c = eCount.totalSelectedStudents;
+        //Call connect to db class
+        for(int i = 0; i < sList.studentsId.size(); i++)
+        {
+            data.add(new StudentModel(sList.firstNames.get(i), sList.lastNames.get(i), sList.mNames.get(i),
+                                      sList.studentsId.get(i), sList.ages.get(i),sList.sections.get(i), 
+                                      sList.yearLevels.get(i), sList.contacts.get(i), sList.emails.get(i), 
+                                      sList.addresses.get(i), sList.enrolledDates.get(i), sList.guardians.get(i)));
+        }
+        
+        tableView.getItems().addAll(data);
+        //loadTable();
         sectBox.getSelectionModel().clearSelection();
+        
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Sucess");
+        alert.setHeaderText("Table updated!");
+        alert.showAndWait();
     }
     public void resetTable()
     {
@@ -129,6 +153,8 @@ public class StudentsController implements Initializable {
                                       sList.addresses.get(i), sList.enrolledDates.get(i), sList.guardians.get(i)));
         }
         //Create columns
+        TableColumn numCol = new TableColumn(" ");
+        
         TableColumn studentIdCol = new TableColumn("Student ID");
         studentIdCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("StudentId"));
         studentIdCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
@@ -151,6 +177,60 @@ public class StudentsController implements Initializable {
         TableColumn yearLevelCol = new TableColumn("Year Level");
         yearLevelCol.setCellValueFactory(new PropertyValueFactory<StudentModel, Integer>("YearLevel"));
         
+        TableColumn<StudentModel, String> btnCol = new TableColumn("Action");
+        Callback<TableColumn<StudentModel, String>, TableCell<StudentModel, String>> cellfactory
+                = new Callback<TableColumn<StudentModel, String>, TableCell<StudentModel, String>>()
+                {
+                    @Override
+                    public TableCell call(final TableColumn<StudentModel, String> param) 
+                    {
+                        final TableCell <StudentModel, String> cell = new TableCell<StudentModel, String>()
+                        {
+                            final Button btn = new Button("View");
+                            
+                            @Override
+                            public void updateItem(String item, boolean empty)
+                            {
+                                super.updateItem(item, empty);
+                                if(empty)
+                                {
+                                    setGraphic(null);
+                                    setTextFill(null);
+                                }
+                                else
+                                {
+                                    btn.setOnAction(event ->
+                                    {
+                                        StudentModel student = getTableView().getItems().get(getIndex());
+                                        StudentInfoPageController info = new StudentInfoPageController();
+                                        info.targetId = student.getStudentId();
+                                        selectedStudentId = student.getStudentId();
+                                        
+                                        getTableView().getSelectionModel().select(getTableView().getItems().get(getIndex()));
+                                        getTableView().getFocusModel().focus(0);
+                                        System.out.println(info.targetId);
+                                        try
+                                        {
+                                            getSelectedStudent();
+                                        }
+                                        catch(Exception e)
+                                        {
+                                            e.printStackTrace();
+                                        }
+                                        getTableView().getSelectionModel().clearSelection();
+                                    });
+                                    btn.getStyleClass().add("buttonBlue");
+                                    btn.setCursor(Cursor.HAND);
+                                    setGraphic(btn);
+                                    setText(null);
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        btnCol.setCellFactory(cellfactory);
+        
         studentsCountLabel.setText(c + " Student(s)");
         
         //Adding data to the table
@@ -158,7 +238,7 @@ public class StudentsController implements Initializable {
         tableView.getItems().addAll(data);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tableView.getColumns().clear();
-        tableView.getColumns().addAll(studentIdCol, firstNameCol, mNameCol, lastNameCol, contactCol, sectionCol, yearLevelCol);
+        tableView.getColumns().addAll(studentIdCol, firstNameCol, mNameCol, lastNameCol, contactCol, sectionCol, yearLevelCol, btnCol);
         
         System.out.println(data);
     }
@@ -257,13 +337,8 @@ public class StudentsController implements Initializable {
         //studentsCountLabel.setText(c + " Student(s)");
         loadTable();
     }
-    /*
-    public void adjustTableView()
+    private void generateTblBtn()
     {
-        Double v = viewSlider.getValue();
-        int sliderValue = (int) Math.round(v);
-        tableView.setFixedCellSize(v + 10);
-        System.out.println(sliderValue);
+        
     }
-    */
 }
